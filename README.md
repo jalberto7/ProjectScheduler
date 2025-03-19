@@ -32,7 +32,7 @@ java -jar target/ProjectScheduler-1.0.jar
 ### Build docker iamge
 docker build -t projectscheduler:1.0 .
 ### Run the Docker Container
-docker run -d -p 8080:8080 projectscheduler:1.0
+docker run -d -p 4001:4001 projectscheduler:1.0
 
 ## Testing
 ### Run the unit test with maven
