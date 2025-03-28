@@ -1,5 +1,6 @@
 package org.example.model;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class Task {
@@ -10,14 +11,23 @@ public class Task {
     private String startDate;
     private String endDate;
 
+    // Additional
+    private int projectPlanId;
+
     public Task() {
     }
 
-    public Task(int id, String name, int duration, List<Integer> dependencies) {
+    public Task(int id, String name, int duration, List<Integer> dependencies, String startDate) {
         this.id = id;
         this.name = name;
         this.duration = duration;
         this.dependencies = dependencies;
+        this.startDate = startDate;
+        this.endDate = calculateEndDate(startDate, duration);
+    }
+
+    private String calculateEndDate(String startDate, int duration) {
+        return LocalDate.parse(startDate).plusDays(duration).toString();
     }
 
     public int getId() {
@@ -66,5 +76,13 @@ public class Task {
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+    }
+
+    public int getProjectPlanId() {
+        return projectPlanId;
+    }
+
+    public void setProjectPlanId(int projectPlanId) {
+        this.projectPlanId = projectPlanId;
     }
 }
